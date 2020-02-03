@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <table v-if='shoppingCar.length'>
+            <thead>
+                <tr>
+                    <th>商品名称</th>
+                    <th>商品价格</th>
+                    <th>商品数量</th>
+                    <th>商品产地</th>
+                    <th>移除</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item,i) in shoppingCar">
+                    <td>{{item.name | fruit}}</td>
+                    <td>{{item.price | setMoney}}</td>
+                    <td><button @click="minus(i)">-</button>{{item.num}}<button @click="add(i)">+</button></td>
+                    <td>{{item.city}}</td>
+                    <td><button @click="remove(i)">删除</button></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>商品总金额:{{countPrice | setMoney}}</td>
+                </tr>
+            </tfoot>
+        </table>
+        <div v-else>暂无商品呦~</div>
+    </div>
+
+
+    <script src="../lib/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                shoppingCar: [{
+                    name: "苹果",
+                    price: 28,
+                    num: 1,
+                    city: "烟台"
+                }, {
+                    name: "香蕉",
+                    price: 38,
+                    num: 1,
+                    city: "越南"
+                }, {
+                    name: "猕猴桃",
+                    price: 56,
+                    num: 1,
+                    city: "西安"
+                }, {
+                    name: "哈密瓜",
+                    price: 18,
+                    num: 1,
+                    city: "新疆"
+                }, {
+                    name: "菠萝蜜",
+                    price: 53,
+                    num: 1,
+                    city: "三亚"
+                }]
+            },
+            methods: {
+                add(i) {
+                    this.shoppingCar[i].num < 10 && this.shoppingCar[i].num++
+                },
+                minus(i) {
+                    this.shoppingCar[i].num > 1 && this.shoppingCar[i].num--
+                },
+                remove(i) {
+                    this.shoppingCar.splice(i, 1)
+                }
+            },
+            computed: {
+                countPrice() {
+                    // let count = 0;
+                    // for (let item of this.shoppingCar) {
+                    //     count += item.price * item.num
+                    // }
+                    return this.shoppingCar.reduce((prev, currect) => {
+                        return prev + currect.price * currect.num
+                    }, 0)
+                }
+            },
+            filters: {
+                //过滤器
+                setMoney(price) {
+                    console.log(price)
+                    return `￥${price}.00`
+                },
+                fruit(fruit) {
+                    return `水果:${fruit}`
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

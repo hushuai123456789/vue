@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+<!-- 方法一 -->
+
+    <!-- 使用语法糖 v-model -->
+    <!-- <div id="app">
+        <input type="text" v-model="str">
+        <p>{{ str }}</p>
+    </div>
+    
+    <script src="./lib/vue.js"></script>
+
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                str:"哈喽"
+            }
+            
+        })
+    </script> -->
+
+
+
+ <!-- 方法二 -->
+
+    <!-- 没有使用语法糖 -->
+    <div id="app">
+        <!-- <input type="text" v-bind:value="str" @input="setStr">
+        <p>{{ str }}</p> -->
+
+         <!-- 语法糖 -->
+        <input type="text" v-model="str">
+        <p>{{ str }}</p>
+
+    </div>
+
+    <script src="./lib/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                str: "大家好"
+            },
+            methods: {
+                setStr(e) {
+                    this.str = e.target.value
+                    console.log(e);
+                }
+            }
+        })
+
+
+        // 修饰符
+            //    number 强制转换成数字类型
+            //    lazy   失去焦点显示.就是在表单上输出不显示，鼠标移出显示
+        //   1.  <input type="text" v-model.number.lazy="str"> 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 选项框 -->
+    <div id="app">
+        <!-- multiple 这个可以多选 -->
+        <select v-model="select" multiple>
+            <option value="手写vue100遍">手写代码100遍</option>
+            <option value="手写render100遍">手写render100遍</option>
+            <option value="早点睡觉">早点睡觉</option>
+            <option value="多吃点饭">多吃点饭</option>
+            <option value="通宵敲代码">通宵敲代码</option>
+
+        </select>
+        <p>{{select}}</p>
+      
+
+    </div>
+
+    <script src="./lib/vue.js"></script>
+    <script>
+    
+        new Vue({
+            el:"#app",
+            data:{
+                select:[]
+            }
+            
+        })
+    </script>
+    
+</body>
+</html>

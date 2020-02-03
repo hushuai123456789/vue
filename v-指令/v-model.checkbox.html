@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 单选按钮切换 -->
+    <div id="app">
+         <!-- <input type="checkbox" value="睡觉" v-model="checkbox">睡觉
+         <input type="checkbox" value="吃饭" v-model="checkbox">吃饭
+         <input type="checkbox" value="午休" v-model="checkbox">午休
+         <input type="checkbox" value="吃晚饭" v-model="checkbox">吃晚饭
+         <input type="checkbox" value="看斗鱼" v-model="checkbox">看斗鱼
+         <input type="checkbox" value="睡晚觉" v-model="checkbox">睡晚觉
+          <p>{{ checkbox }}</p> -->
+
+          <input type="checkbox" value="睡觉" v-model="bool">请选择
+          <p>{{ bool }}</p>
+          <button v-bind:disabled="!bool" @click="next">下一步</button>
+
+
+    </div>
+
+    <script src="./lib/vue.js"></script>
+    <script>
+    
+        new Vue({
+            el:"#app",
+            data:{
+                checkbox:[],
+                bool: " "
+            },
+            methods:{
+                next(){
+                    // if(this.bool) alert(1);
+                    alert(1)
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
